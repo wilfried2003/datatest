@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Formulaire d'inscription</title>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <nav>
+            <a href="Pageprincipal.html" class="logo">Université de San Pedro</a>
+            <ul>
+                <li><a href="infos.html">Infos sur la DATA</a></li>
+                <li><a href="Reglement.html">Reglement de la DATA</a></li>
+                <li><a href="contrat.html">Contrat</a></li>
+
+                <li>
+                    <button class="btn" id="displayform">S'inscrire à la DATA TEST </button>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <div class="sec container">
+                <div class="form-wrapper">
+                    <div class="card">
+                        <div class="card-header">
+                            <div id="forlogin" class="form-header active" >Se connecter </div>
+                            <div id="forregister" class="form-header">S'inscrire</div>
+
+                        </div>
+                        <div action="traitement.php" class="card-body" id="formContainer" method="post">
+                            <form id="formlogin">
+                                <input type="text" class="form-control" placeholder="Nom d'utilisateur*" required>
+                                <input type="password" class="form-control" placeholder="@password*" required>
+                                <button class="formbutton" type="submit" >Connexion</button>
+                            </form>
+                            <form action="traitement.php" id="formregister" class="toggleform" method="post" onsubmit=disableSubmitButton()>
+                                <label for="sujet">Choisissez une option</label>
+                                <select class="form-control" name="Ecole ou filère" id="Filières" required>
+                                <option value="" disabled selected hidden>Votre filière</option>
+                                <option value="PREPA">CPGE</option>
+                                <option value="UFR SCIENCE DE LA MER">SDM</option>
+                                <option value="UFR AGRICULTURE">ARHAI</option>
+                                <option value="UFR TOURISME">TES</option>
+                                </select>
+                                <label for="sujet">choisissez une option</label>
+                                <select class="form-control" name="Ecole ou filère" id="Niveau" required>
+                                <option value="" disabled selected hidden>Votre Niveau</option>
+                                <option name ="" value="1ère Année">P1/L1</option>
+                                <option  value="2ème Année">P2/L2</option>
+                                <input type="text" name="nom" class="form-control" placeholder="NOM *" required>
+                                <input type="text" name="prenom" class="form-control" placeholder="PRENOM *" required> 
+                                <input type="email" name="email" class="form-control" placeholder="Votre e-mail *" required>                          
+                                <button class="formbutton" type="submit" id="submitBtn">Inscription</button>
+                                <div id="message"></div>
+                                <span id="erreur-nom" class="message-erreur"></span>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="consoleOutput"></div>
+    
+    
+    <script>
+        const displayform=_('displayform');
+        const forlogin =_('forlogin');
+        const formlogin=_('formlogin');
+        const forregister =_('forregister');
+        const formregister =_('formregister');
+        const formContainer =_('formContainer');
+        const formbutton =_('formbutton')
+        displayform.addEventListener('click',showform)
+       
+       
+        forlogin.addEventListener('click', () => {
+            forlogin.classList.add('active');
+                forregister.classList.remove('active');
+                if(formlogin.classList.contains('toggleform')){
+                    formContainer.style.transform = 'translate(0%)';
+                    formContainer.style.transition = 'transform .5s';
+                    formregister.classList.add('toggleform');
+                    formlogin.classList.remove('toggleform');
+            }
+        });
+        
+        forregister.addEventListener('click', () => {
+            
+                forlogin.classList.remove('active');
+                forregister.classList.add('active');
+                if(formregister.classList.contains('toggleform')){
+                    formContainer.style.transform = 'translate(-100%)';
+                    formContainer.style.transition = 'transform .3s';
+                    formregister.classList.remove('toggleform');
+                    formlogin.classList.add('toggleform');
+            }
+        });        
+        
+        function _(e) {
+            return document.getElementById(e);
+        }
+        
+        function showform() {
+            document.querySelector('.form-wrapper .card').classList.toggle('show');
+        }
+        function afficherMessage(){
+            var messageElement = document.getElementById('message');
+            messageElement.innerHTML = 'Merci pour votre insciption'
+
+        }
+        function disableSubmitButton(){
+            document.getElementById('submitBtn').disabled= true;
+        }
+        
+        formregister.addEventListener("submit", function(event){
+            event.preventDefault();
+            var nom = document.getElementsByName("nom")[0].value;
+            var prenom = document.getElementsByName("prenom")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var selectedValue1 = _("Niveau").value;
+            var selectedValue2 = _("Filières").value;
+            
+            console.group('Inscription');
+            console.log("Nom :", nom);
+            console.log("Prenom :", prenom);
+            console.log("Email :", email);
+            console.log("Niveau :", selectedValue1 );
+            console.log("Filière :", selectedValue2);
+            console.groupEnd();
+            var consoleOutput = _("consoleOutput");
+            var consoleMessages = consoleOutput.innerText;
+            consoleOutput.innerHTML = consoleMessages.replace(/\n/g, "<br>");
+        })
+        
+        formregister.addEventListener("submit", function(event){
+            event.preventDefault();
+            afficherMessage();
+        });
+        
+        document.querySelector('form').addEventListener('submit',function(event){
+            event.preventDefault();
+            var nom =document-getElementById('nom').value;
+            
+            if(nom ==='valeur_deja_utilisee'){
+                document.getElementById('erreur-nom').textContent='le nom est dejà utilisé, choissisez un autre !';
+            } 
+            else {
+                this.submit();
+            }
+        });
+        
+        
+        
+        
+        
+        
+        document.querySelector('form').addEventListener('submit',function(event){
+            event.preventDefault();
+            var nom =document-getElementById('nom').value;
+            if(nom ==='valeur-deja-utilisee'){
+                document.getElementById('nom').classList.add('champ-deja-utilise');
+            } 
+            else {
+                this.submit();
+            }
+        });
+      
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+
+::before.
+::after {
+    box-sizing: border-box ;
+    font-family: "system-ul", sans-sherif;
+    margin: 0;
+    padding: auto;
+    outline: none;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    padding:0 8px;
+    background: linear-gradient(rgba(0,0,0, .4), transparent),  center center no-repeat;
+    background-size: cover;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px 0px;
+}
+nav.logo{
+    width: 120px;
+    cursor: pointer;
+    font-size: 2.2fr;
+    font-style: oblique;
+    font-weight: bold;
+    text-decoration: none;
+    color: goldenrod;
+}
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    padding-right: 40px;
+    text-align: right;
+    list-style: none;
+}
+
+nav ul li{
+    margin-right: 10px;
+}
+nav ul li a{
+    padding: 10px;
+    text-decoration: none;
+    color: goldenrod;
+    font-size: 16px;
+
+}
+ button.btn{
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-style:oblique;
+    margin-top: 0;
+    background-color: transparent;
+    color: goldenrod;
+    border: 1px solid transparent;
+    transition: border-color .3s;
+ }
+button.btn:hover{
+    border-color: goldenrod;
+    transition: all;
+  }
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+  }
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+}
+.form-wrapper .card {
+    width: 360px;
+    padding: 20px;
+    background-color: rgba(0 0 0/35%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibilyty .3s;
+
+
+}
+.card.show{
+    visibility: visible;
+    opacity: 1;
+}
+.card-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 30px 20px 0;
+    font-size: 1.1rem;
+    color: goldenrod;
+    box-shadow: 2px 3px 8px goldenrod;
+    border-radius: 50px;
+}
+.card-header .form-header {
+    flex: 50%;
+    text-align: center;
+    padding: 10px 0px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card-header .form-header.active {
+    box-shadow: inset 1px 1px 2px rgb(19 210 177/55%), inset 1px 1px 2px rgb(19 210 177/55%),1px 1px 2px rgb(19 210 177/55%),1px 1px 2px rgb(19 210 177/55%);
+        inset: 1px 1px 2px rgb(19 210 177/55%);
+        border-color: goldenrod;
+    transition: border-color .3s, box-shadow .3s;
+}
+
+.card-body{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 40px 0;
+    text-align: center;
+}
+
+form{
+    flex: 0 0 100%;
+}
+.toggleform{
+    visibility: hidden;
+    opacity: o;
+    transition: opacity .3s, visibility .3s;
+}
+.form-control{
+    width: 100%;
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgb(134 255 249/65%);
+    border-color: goldenrod;
+    outline: none;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    color: white;
+}
+.form-control::placeholder {
+    color: whitesmoke;
+}
+.formbutton {
+    border: 1px solid transparent;
+    padding: 1rem -3rem;
+    background-color:goldenrod;
+    border-radius: 50px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: transform .3s, boxshadow .3s;
+    
+
+}
+.formbutton:hover {
+    box-shadow: 1px 3px 115px goldenrod;
+    transform: translateY(-5px);
+}
+marquee {
+    color: goldenrod;
+}
+
+/*input:invalid{
+    border: 2px dashed goldenrod;
+}
+
+input:valid{
+    border: 1px solid transparent;
+}*/
+
+label{
+    color: goldenrod;}
+
+
+
+
+select.form-control {
+    background-color: transparent ;
+    border-radius: 100%;
+    
+}
+div.message{
+    box-shadow: 1px 2px 5px;
+    background-color: goldenrod;
+}
+
+.champ-deja-utilise{
+    border: 2px solid red;
+    background-color: #ffdddd;
+}
